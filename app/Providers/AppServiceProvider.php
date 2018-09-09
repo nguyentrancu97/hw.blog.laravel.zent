@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use \App\Category;
 use \App\Post;
+use \App\Tag;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -16,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->share('categories',Category::get());
         
-        view()->share('lastPosts',Post::select('posts.*')->orderBy('id','desc')->limit(4)->get());
+        view()->share('lastPosts',Post::select('posts.*')->orderBy('id','desc')->limit(3)->get());
+
+        view()->share('tags',Tag::get());
     }
 
     /**

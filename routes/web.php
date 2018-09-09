@@ -13,9 +13,17 @@
 
 
 
-Route::get('home','HomeController@index');
+Route::get('index','HomeController@index');
 
 Route::get('blog/{slug}','HomeController@detail');
 
 Route::get('category/{slug}','HomeController@category');
 
+Route::get('tag/{slug}',"HomeController@tag");
+
+Route::get('search','HomeController@search');
+
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
