@@ -30,10 +30,11 @@
             <div class="clearfix"></div>
         </div> --}}
         <div class="widget tags">
-                <h3 class="widget-title">
+                
+                <div class="tags-container">
+                    <h3 class="widget-title">
                     Tags
                 </h3>
-                <div class="tags-container">
                     @foreach($post->tags as $tag)
 
                     <a href="{{asset('')}}tag/{{$tag->slug}}">{{$tag->name}}</a>

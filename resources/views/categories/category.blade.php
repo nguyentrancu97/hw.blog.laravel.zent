@@ -18,7 +18,7 @@
      <div class="post-text">
        <span class="date">{{$post->create_at}}</span>
        <h2><a href="{{asset('')}}blog/{{$post->slug}}">{{$post->title}}</a></h2>
-       <p class="text">{{$post->content}}
+       <p class="text">{{$post->description}}
         <a href="#"><i class="icon-arrow-right2"></i></a></p>                                 
       </div>
       <div class="post-info">

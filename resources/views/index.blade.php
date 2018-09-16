@@ -15,7 +15,7 @@
     <article>
         <div class="post-image">
             <img src="{{ asset($post->thumbnail) }}" alt="post image 1">
-            <div class="category"><a href="{{asset('')}}category/{{$post->category->slug}}">IMG</a></div>
+            <div class="category"><a href="{{asset('')}}category/{{$post->category->slug}}">{{$post->category->name}}</a></div>
         </div>
         <div class="post-text">
             <span class="date">{{ $post->created_at }}</span>

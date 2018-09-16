@@ -52,7 +52,7 @@
                 @foreach($categories as $key =>$category)
                 
                 @if($category->parent_id == null)
-                <li><a href="{{$category->slug}}" class="@if($key == 0) active @endif">{{$category->name}}
+                <li><a href="{{asset('')}}category/{{$category->slug}}" class="@if($key == 0) active @endif">{{$category->name}}
                     @foreach($categories as $subcategory) 
                     @if($subcategory->parent_id == $category->id)
                     <i class="icon-arrow-down8"></i>
@@ -243,7 +243,7 @@
 
 
             <!-- TAGS -->                            
-            <div class="widget tags">
+            {{-- <div class="widget tags">
                 <h3 class="widget-title">
                     Tags
                 </h3>
@@ -255,7 +255,7 @@
                                                       
                 </div>
                 <div class="clearfix"></div>
-            </div> 
+            </div>  --}}
 
 
             <!-- ADVERTISING -->                           

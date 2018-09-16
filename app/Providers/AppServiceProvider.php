@@ -15,11 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('categories',Category::get());
-        
-        view()->share('lastPosts',Post::select('posts.*')->orderBy('id','desc')->limit(3)->get());
+        if(!\App::runningInConsole()){
+            
+            view()->share('categories',Category::get());
 
-        view()->share('tags',Tag::get());
+            view()->share('lastPosts',Post::select('posts.*')->orderBy('id','desc')->limit(3)->get());
+
+            view()->share('tags',Tag::get());
+        }
+        
     }
 
     /**

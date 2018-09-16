@@ -13,17 +13,19 @@
 
 
 
-Route::get('index','HomeController@index');
+Route::get('index','BlogController@index');
 
-Route::get('blog/{slug}','HomeController@detail');
+Route::get('blog/{slug}','BlogController@detail');
 
-Route::get('category/{slug}','HomeController@category');
+Route::get('category/{slug}','BlogController@category');
 
-Route::get('tag/{slug}',"HomeController@tag");
+Route::get('tag/{slug}',"BlogController@tag");
 
-Route::get('search','HomeController@search');
+Route::get('search','BlogController@search');
 
 
-// Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
