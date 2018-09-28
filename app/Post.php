@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title','description','content','user_id','slug'];
+    protected $fillable = ['title','description','content','user_id','slug','view_post'];
 
     public function category(){
     	return $this->belongsTo('App\Category');

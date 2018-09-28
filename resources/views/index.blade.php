@@ -14,11 +14,19 @@
 
     <article>
         <div class="post-image">
-            <img src="{{ asset($post->thumbnail) }}" alt="post image 1">
+            <img src="{{ asset('storage')}}/{{$post->thumbnail }}" alt="post image 1">
             <div class="category"><a href="{{asset('')}}category/{{$post->category->slug}}">{{$post->category->name}}</a></div>
         </div>
         <div class="post-text">
-            <span class="date">{{ $post->created_at }}</span>
+            <span class="date">
+                @php
+                $date = new DateTime($post->created_at); // tạo biến mới để đổi kiểu thời gian mặc định của csdl
+                $month_num = $date->format('m'); //lấy ra tháng
+                $convert_month = DateTime::createFromFormat('!m',$month_num); //convert tháng sang kiểu chữ
+
+                @endphp
+                {{$convert_month->format('F')}} {{$date->format('d')}}, {{$date->format('Y')}}
+            </span>
             <h2><a href="{{asset('')}}blog/{{$post->slug}}">{{ $post->title }}</a></h2>
             <p class="text">
                 {!! $post->description !!}
@@ -31,7 +39,7 @@
                 <a href="#"><i class="icon-facebook5"></i></a>
                 <a href="#"><i class="icon-twitter4"></i></a>
                 <a href="#"><i class="icon-google-plus"></i></a>
-                <span class="comments">25 <i class="icon-bubble2"></i></span>
+                <span class="comments">{{$post->view_post}}view</span>
             </div>
             <div class="clearfix"></div>
         </div>

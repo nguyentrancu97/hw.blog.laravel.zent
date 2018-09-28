@@ -65,36 +65,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 </body>
-@if($errors->has('name'))
-		<script>
-			$(document).ready(function(){
-				toastr.error('{{$errors->first('name')}}');
-			});
+@stack('script')
 
-		</script>
-@endif
-@if($errors->has('username'))
-		<script>
-			$(document).ready(function(){
-				toastr.error('{{$errors->first('username')}}');
-			});
-
-		</script>
-@endif
-@if($errors->has('email'))
-		<script>
-			$(document).ready(function(){
-				toastr.error('{{$errors->first('email')}}');
-			});
-
-		</script>
-@endif
-@if($errors->has('password'))
-		<script>
-			$(document).ready(function(){
-				toastr.error('{{$errors->first('password')}}');
-			});
-
-		</script>
-@endif
 </html>

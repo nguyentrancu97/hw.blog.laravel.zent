@@ -46,3 +46,22 @@
 			</div>
 		</div>
 @endsection
+@push('script')
+@if($errors->has('username'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('username')}}');
+			});
+
+		</script>
+@endif
+
+@if($errors->has('password'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('password')}}');
+			});
+
+		</script>
+@endif
+@endpush

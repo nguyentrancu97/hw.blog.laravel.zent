@@ -5,15 +5,15 @@
 <!-- CONTENT -->    
 <div class="content col-xs-8">
 
- @foreach($posts as $post)
+ @foreach($cate as $post)
  <div>
 
 
    <!-- ARTICLE 1 -->      
    <article>
      <div class="post-image">
-       <img src="{{$post->thumbnail}}" alt="post image 1">
-       <div class="category"><a href="#">IMG</a></div>
+       <img src="{{asset('storage')}}/{{$post->thumbnail}}" alt="post image 1">
+       <div class="category"><a href="#">{{$namecate}}</a></div>
      </div>
      <div class="post-text">
        <span class="date">{{$post->create_at}}</span>
@@ -22,8 +22,15 @@
         <a href="#"><i class="icon-arrow-right2"></i></a></p>                                 
       </div>
       <div class="post-info">
-       <div class="post-by">Post By <a href="#">AD-Theme</a></div>
-     </div>
+            <div class="post-by">Post By <a href="#">AD-Theme</a></div>
+            <div class="extra-info">
+                <a href="#"><i class="icon-facebook5"></i></a>
+                <a href="#"><i class="icon-twitter4"></i></a>
+                <a href="#"><i class="icon-google-plus"></i></a>
+                <span class="comments">{{$post->view_post}}view</span>
+            </div>
+            <div class="clearfix"></div>
+        </div>
    </article>
 
  </div>
@@ -34,11 +41,11 @@
 
  <!-- NAVIGATION -->
  <div class="navigation">
-  @if($posts->currentPage() != 1)
-  <a href="{{$posts->url($posts->currentPage()-1)}}" class="prev"><i class="icon-arrow-left8"></i> Previous Posts</a>
+  @if($cate->currentPage() != 1)
+  <a href="{{$cate->url($cate->currentPage()-1)}}" class="prev"><i class="icon-arrow-left8"></i> Previous Posts</a>
   @endif
-  @if($posts->currentPage() != $posts->lastPage())
-  <a href="{{$posts->url($posts->currentPage()+1)}}" class="next">Next Posts <i class="icon-arrow-right8"></i></a>
+  @if($cate->currentPage() != $cate->lastPage())
+  <a href="{{$cate->url($cate->currentPage()+1)}}" class="next">Next Posts <i class="icon-arrow-right8"></i></a>
   @endif
   <div class="clearfix"></div>
 </div>  

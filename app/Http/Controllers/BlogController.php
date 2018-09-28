@@ -14,21 +14,24 @@ class BlogController extends Controller
     // 	return view('index',['posts'=>$posts]);
     // }
     public function index(){
-    	$posts = \App\Post::paginate(5);
+    	$posts = \App\Post::select('posts.*')->orderBy('created_at','desc')->paginate(5);
         
     	return view('index',compact('posts'));
     }
     public function detail($slug){
     	$post = \App\Post::where('slug',$slug)->firstOrFail();
+        $post->view_post += 1;
+        $post->update();
+        
     	return view('posts.detail',['post'=>$post]);
     }
     public function category($slug){
-         $posts = \App\Category::where('slug',$slug)->firstOrFail()->posts()->paginate(4);
-        
-        
+        $cate = \App\Category::where('slug',$slug)->firstOrFail();
+            
+        $namecate = $cate->name;
     	// $category = Category::where('slug',$slug)->firstOrFail();
     	// $posts = Post::where('category_id',$category->id)->paginate(2);
-    	return view('categories.category',['posts'=>$posts]);
+    	return view('categories.category',['cate'=>$cate->posts()->orderBy('created_at','desc')->paginate(4) , 'namecate' => $namecate]);
     }
 
     public function tag($slug){
@@ -38,6 +41,17 @@ class BlogController extends Controller
     public function search(Request $request){
         $posts = \App\Post::where('title','like','%'.$request->name.'%')->paginate(4);
         return view('index',['name'=>$request->name,'posts'=>$posts]);
+    }
+
+    public function upload(Request $request){
+        $path = $request->images;
+
+        foreach ($path as $image) {
+            $path = $image->store('images');
+            // $image->storeAs('images',$image->getClientOriginalName());
+        }
+        dd($path);
+        
     }
 
     // public function store(PostRequest $request){
@@ -64,14 +78,5 @@ class BlogController extends Controller
     // );
     // }
 
-    // public function ca(){
-    // 	$category = Category::firstOrFail();
-    // 	dd($category->posts);
-
-    // }
-
-    // public function po(){
-    // 	$post = Post::firstOrFail();
-    // 	dd($post->category);
-    // }
+   
 }

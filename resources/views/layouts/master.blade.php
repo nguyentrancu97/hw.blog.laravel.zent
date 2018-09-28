@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Blog - Zent</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="{{asset('blog_assets')}}/img/favicon.png" />
     <!-- STYLES -->
     <link rel="stylesheet" type="text/css" href="{{ asset('blog_assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('blog_assets/css/slippry.css') }}">
@@ -16,6 +16,8 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Sarina' rel='stylesheet' type='text/css'>
+
+    
 </head>
 
 <body>
@@ -30,7 +32,7 @@
     <!-- *****************************************************************
     ** Header ************************************************************ 
     ****************************************************************** -->
-    <header class="tada-container">
+    <header class="tada-container" style="width: 900px;">
         <!-- LOGO -->
         <div class="logo-container">
             <a href="{{asset('index')}}"><img src="{{ asset('blog_assets/img/logo.png')}}" alt="logo" ></a>
@@ -44,7 +46,7 @@
         </div>
         <!-- MENU DESKTOP -->
 
-        <nav class="menu-desktop menu-sticky">
+        <nav class="menu-desktop menu-sticky" style="width: 900px;">
             <ul class="tada-menu">
 
                 @if(!empty($categories)) 
@@ -128,7 +130,7 @@
         </div>
         <!-- # menu responsive container -->
         <!-- SEARCH -->
-        <div class="tada-search">
+        <div class="tada-search" >
             <form action="{{asset('search')}}" method="get">
                 <div class="form-group-search">
 
@@ -185,7 +187,7 @@
     <!-- *****************************************************************
     ** Section ***********************************************************
     ****************************************************************** -->
-    <section class="tada-container content-posts">
+    <section class="tada-container content-posts" style="width: 900px;">
         @yield('content')
         <!-- SIDEBAR -->
         <div class="sidebar col-xs-4">
@@ -212,8 +214,8 @@
                 <div class="posts-container">
                     @foreach($lastPosts as $lastPost)
                     <div class="item">
-                        <img src="{{$lastPost->thumbnail}}" alt="post 1" class="post-image">
-                        <div class="info-post">
+                        <img src="{{asset('storage')}}/{{$lastPost->thumbnail}}" alt="post 1" class="post-image">
+                        <div class="info-post" style="width: 100%;">
                             <h5><a href="{{asset('')}}blog/{{$lastPost->slug}}">{{$lastPost->title}}</a></h5>
                             <span class="date">{{$lastPost->created_at}}</span>  
                         </div> 
@@ -316,6 +318,7 @@
     <script src="{{ asset('blog_assets/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('blog_assets/js/slippry.js') }}"></script>
     <script src="{{ asset('blog_assets/js/main.js') }}"></script>
-</body>
 
+</body>
+    @stack('script')
 </html>

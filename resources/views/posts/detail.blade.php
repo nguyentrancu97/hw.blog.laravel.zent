@@ -5,14 +5,14 @@
     <!-- ARTICLE 1 -->
     <article>
         <div class="post-image">
-            <img src="{{$post->thumbnail}}" alt="post image 1">
+            <img src="{{asset('storage')}}/{!!$post->thumbnail!!}" alt="post image 1">
         </div>
         <div class="post-text">
-            <h2>{{$post->title}}</h2>
+            <h2>{!!$post->title!!}</h2>
         </div>
         <div class="post-text text-content">
             <div class="text">
-                <p>{{$post->content}}</p>
+                <p>{!!$post->content!!}</p>
             </div>
         </div>
         {{-- <div class="post-info">
@@ -44,5 +44,18 @@
                 <div class="clearfix"></div>
             </div> 
     </article>
+    <div class="fb-comments" data-href="{{asset('blog')}}/{{$post->slug}}" data-numposts="5"></div>
 </div>
+
 @endsection
+
+@push('script')
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+@endpush

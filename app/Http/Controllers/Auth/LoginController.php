@@ -44,9 +44,22 @@ class LoginController extends Controller
         request()->merge([$field => $login]);
         return $field;
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
     protected function loggedOut()
     {
         return redirect('login');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.BlogLogin');
     }
 
     // public function login(Request $request){

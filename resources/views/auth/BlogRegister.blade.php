@@ -50,3 +50,37 @@
 		
 			
 @endsection
+@push('script')
+@if($errors->has('name'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('name')}}');
+			});
+
+		</script>
+@endif
+@if($errors->has('username'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('username')}}');
+			});
+
+		</script>
+@endif
+@if($errors->has('email'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('email')}}');
+			});
+
+		</script>
+@endif
+@if($errors->has('password'))
+		<script>
+			$(document).ready(function(){
+				toastr.error('{{$errors->first('password')}}');
+			});
+
+		</script>
+@endif
+@endpush

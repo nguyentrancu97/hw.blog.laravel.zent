@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Post;
+use App\Category;
+use Yajra\Datatables\Datatables;
+use Illuminate\Support\Str;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('admin.home');
     }
+
+
+
 }

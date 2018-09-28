@@ -108,6 +108,7 @@ class CrawlerDantri extends Command
         $newPost->category_id = $cate->id;
         $newPost->slug = str_slug($title.time());
         $newPost->thumbnail = $thumbnail;
+        $newPost->viewPost = 0;
         $newPost->save();
 
         $tagNames = $crawler->filter('#ctl00_IDContent_ctl00_divContent span.news-tags-item a')->each(function ($node) {
